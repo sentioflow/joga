@@ -70,17 +70,27 @@
             align-items: center;
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--sage);
-            text-decoration: none;
-            letter-spacing: -0.5px;
+        .logo-img {
+            height: 44px;
+            width: auto;
+            display: block;
+            transition: height 0.4s ease;
         }
 
-        .logo span {
-            color: var(--coral);
+        nav.scrolled .logo-img {
+            height: 36px;
+        }
+
+        .logo-img-footer {
+            height: 32px;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
         }
 
         .nav-links {
@@ -1102,8 +1112,8 @@
             font-size: 0.82rem;
         }
 
-        .footer-bottom .logo {
-            font-size: 1.2rem;
+        .footer-bottom .logo-img {
+            height: 28px;
         }
 
         /* ===== ANIMATIONS ===== */
@@ -1255,7 +1265,7 @@
     <!-- NAVIGATION -->
     <nav id="navbar">
         <div class="nav-inner">
-            <a href="#" class="logo">Sentio<span>Flow</span></a>
+            <a href="#" class="logo"><img src="logo.png" alt="SentioFlow" class="logo-img"></a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#problemy">Dlaczego joga?</a></li>
                 <li><a href="#o-mnie">O mnie</a></li>
@@ -1636,7 +1646,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <a href="#" class="logo">Sentio<span>Flow</span></a>
+            <a href="#" class="logo"><img src="logo.png" alt="SentioFlow" class="logo-img logo-img-footer"></a>
             <span>© 2026 SentioFlow Elżbieta Markiewicz. Wszelkie prawa zastrzeżone.</span>
         </div>
     </section>
