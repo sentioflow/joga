@@ -1146,6 +1146,12 @@
         }
 
         /* ===== MOBILE ===== */
+        @media (max-width: 1100px) and (min-width: 901px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
         @media (max-width: 900px) {
             .hero-inner {
                 grid-template-columns: 1fr;
@@ -1179,7 +1185,7 @@
             }
 
             .pricing-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
                 max-width: 400px;
                 margin-left: auto;
                 margin-right: auto;
@@ -1281,7 +1287,7 @@
                 <div class="hero-card">
                     <div class="hero-card-icon">🧒</div>
                     <h3>Najbliższe zajęcia</h3>
-                    <p>SP 27 Halemba, środa 17:00 — grupy 8–10 dzieci. Kameralna atmosfera, indywidualne podejście do każdego dziecka.</p>
+                    <p>SP 27 Halemba, wtorki 17:00 — grupy 8–10 dzieci. Kameralna atmosfera, indywidualne podejście do każdego dziecka.</p>
                     <div class="hero-stats">
                         <div class="hero-stat">
                             <div class="hero-stat-value">10 lat</div>
@@ -1440,7 +1446,7 @@
                 <div class="about-content reveal">
                     <div class="section-label">O mnie</div>
                     <h2>Fizjoterapeutka, nauczycielka, <em>mama która rozumie</em></h2>
-                    <p class="about-text">Jestem Ela. Od 10 lat pracuję z dziećmi — najpierw jako nauczycielka edukacji wczesnoszkolnej, potem jako fizjoterapeutka dziecięca. Widziałam setki dzieci z wadami postawy, z trudnościami w regulacji emocji, z ciałami zmęczonymi siedzeniem.</p>
+                    <p class="about-text">Jestem Ela. Od 10 lat pracuję z dziećmi — najpierw jako fizjoterapeutka dziecięca, potem jako nauczycielka edukacji wczesnoszkolnej. Widziałam setki dzieci z wadami postawy, z trudnościami w regulacji emocji, z ciałami zmęczonymi siedzeniem.</p>
                     <p class="about-text">SentioFlow to połączenie moich dwóch światów — wiedzy medycznej o dziecięcym ciele i doświadczenia pedagogicznego w pracy z małymi ludźmi. Wiem, jak sprawić, żeby ćwiczenia były skuteczne i jednocześnie takie, na które dzieci CHCĄ wracać.</p>
                     <div class="about-credentials">
                         <div class="credential">🎓 Dyplom fizjoterapii</div>
@@ -1463,7 +1469,18 @@
                 <h2 class="section-title reveal">Proste pakiety,<br>zero ukrytych kosztów</h2>
                 <p class="section-subtitle reveal">Pierwsze zajęcia? Przyjdź na bezpłatny pokaz 3 marca i sprawdź, czy to coś dla Twojego dziecka. Bez zobowiązań.</p>
             </div>
-            <div class="pricing-grid">
+            <div class="pricing-grid" style="grid-template-columns: repeat(4, 1fr);">
+                <div class="price-card reveal">
+                    <div class="price-name">Pojedyncze</div>
+                    <div class="price-amount">50 <span>zł</span></div>
+                    <div class="price-per">1 wejście</div>
+                    <ul class="price-features">
+                        <li>1 wejście na zajęcia grupowe</li>
+                        <li>Grupy 8–10 dzieci</li>
+                        <li>45 minut zajęć</li>
+                        <li>Obserwacja fizjoterapeutyczna</li>
+                    </ul>
+                </div>
                 <div class="price-card reveal">
                     <div class="price-name">Pakiet 4</div>
                     <div class="price-amount">180 <span>zł</span></div>
@@ -1507,7 +1524,7 @@
                 </div>
                 <div class="detail-item">
                     <div class="detail-icon">🕐</div>
-                    <div class="detail-label">Środy, 17:00</div>
+                    <div class="detail-label">Wtorki, 17:00</div>
                     <div class="detail-value">Po lekcjach, wygodna godzina</div>
                 </div>
                 <div class="detail-item">
@@ -1558,13 +1575,13 @@
                 <div class="faq-item reveal">
                     <button class="faq-question">40–50 zł za zajęcia — czy to dużo?</button>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">Standardowa wizyta u fizjoterapeuty dziecięcego to 100–150 zł za sesję. Na zajęciach SentioFlow Twoje dziecko otrzymuje obserwację fizjoterapeutyczną w grupie za ułamek tej ceny. Pakiet 8 wejść (40 zł/zajęcia) to odpowiednik „taniej fizjoterapii" w formie, która dzieciom się podoba. A widoczną zmianę w postawie zobaczysz już po 2–3 tygodniach.</div>
+                        <div class="faq-answer-inner">Standardowa wizyta u fizjoterapeuty dziecięcego to 100–150 zł za sesję. Na zajęciach SentioFlow Twoje dziecko otrzymuje obserwację fizjoterapeutyczną w grupie za ułamek tej ceny. Pakiet 8 wejść (40 zł/zajęcia) to odpowiednik „taniej fizjoterapii" w formie, która dzieciom się podoba.</div>
                     </div>
                 </div>
                 <div class="faq-item reveal">
                     <button class="faq-question">Muszę być na miejscu podczas zajęć?</button>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">Nie musisz, ale jesteś mile widziana. Większość rodziców odprowadza dziecko i odbiera po 45 minutach. Na pierwszych zajęciach zachęcam do pozostania — zobaczysz jak pracuję i Twoje dziecko będzie się czuło pewniej. Później dostajesz krótką informację po każdych zajęciach.</div>
+                        <div class="faq-answer-inner">Nie musisz, ale jesteś mile widziana. Większość rodziców odprowadza dziecko i odbiera po 45 minutach. Na pierwszych zajęciach zachęcam do pozostania — zobaczysz jak pracuję i Twoje dziecko będzie się czuło pewniej.</div>
                     </div>
                 </div>
                 <div class="faq-item reveal">
@@ -1611,7 +1628,7 @@
                 <h3>📍 Gdzie odbywają się zajęcia</h3>
                 <div class="contact-info-item">🏫 Szkoła Podstawowa nr 27</div>
                 <div class="contact-info-item">📌 Halemba, Ruda Śląska</div>
-                <div class="contact-info-item">🕐 Środy, godzina 17:00</div>
+                <div class="contact-info-item">🕐 Wtorki, godzina 17:00</div>
                 <div class="contact-info-item">👧 Dzieci 6–11 lat (klasy 1–5)</div>
                 <div class="contact-info-item" style="margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.08);">
                     <span style="font-size: 0.82rem;">NIP: 6412389393 &nbsp;|&nbsp; REGON: 543890737</span>
