@@ -607,6 +607,69 @@
             font-weight: 700;
         }
 
+        /* ===== GALLERY STRIP ===== */
+        .gallery-strip {
+            padding: 2rem 0;
+            background: var(--cream);
+            overflow: hidden;
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .gallery-item {
+            flex: 1;
+            min-width: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.2rem 1.5rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.65));
+            color: var(--white);
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-track {
+                flex-direction: column;
+            }
+
+            .gallery-item img {
+                height: 220px;
+            }
+        }
+
         /* ===== ABOUT SECTION ===== */
         .about {
             padding: 6rem 2rem;
@@ -1572,19 +1635,33 @@
         </div>
     </section>
 
+    <!-- PHOTO GALLERY STRIP -->
+    <section class="gallery-strip">
+        <div class="gallery-track">
+            <div class="gallery-item">
+                <img src="karty.jpg" alt="Karty z asanami jogi — zwierzęta, które dzieci naśladują na zajęciach SentioFlow" loading="lazy">
+                <div class="gallery-caption">Karty z asanami — dzieci ćwiczą wcielając się w zwierzęta</div>
+            </div>
+            <div class="gallery-item">
+                <img src="kolorowe_cosie.jpg" alt="Kolorowa mata sensoryczna używana na zajęciach SentioFlow" loading="lazy">
+                <div class="gallery-caption">Zajęcia angażują wszystkie zmysły</div>
+            </div>
+        </div>
+    </section>
+
     <!-- ABOUT -->
     <section class="about" id="o-mnie">
         <div class="section-container">
             <div class="about-grid">
                 <div class="about-photo reveal">
-                    <div class="about-photo-frame">
-                        <div class="about-photo-emoji">🧘</div>
-                        <div class="about-photo-content">
+                    <div class="about-photo-frame" style="padding: 0; overflow: hidden;">
+                        <img src="ela.png" alt="Elżbieta Markiewicz — fizjoterapeutka dziecięca, założycielka SentioFlow" style="width: 100%; height: 100%; object-fit: cover; min-height: 420px; display: block;">
+                        <div class="about-photo-content" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem; background: linear-gradient(transparent, rgba(0,0,0,0.7));">
                             <div class="credential-tag">Fizjoterapeutka</div>
                             <div class="credential-tag">Nauczycielka</div>
                             <div class="credential-tag">10 lat z dziećmi</div>
-                            <p style="margin-top: 1.5rem; font-size: 1.6rem; font-family: 'Playfair Display', serif;">Elżbieta Markiewicz</p>
-                            <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 0.3rem;">założycielka SentioFlow</p>
+                            <p style="margin-top: 1rem; font-size: 1.4rem; font-family: 'Playfair Display', serif;">Elżbieta Markiewicz</p>
+                            <p style="opacity: 0.8; font-size: 0.85rem; margin-top: 0.2rem;">założycielka SentioFlow</p>
                         </div>
                     </div>
                 </div>
