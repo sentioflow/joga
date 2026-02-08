@@ -8,6 +8,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) - loaded after cookie consent -->
+    <script>
+        function loadGoogleAnalytics() {
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-KQ56VYLX84';
+            document.head.appendChild(script);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'G-KQ56VYLX84');
+        }
+        // Auto-load if consent was already given
+        if (localStorage.getItem('cookie_consent') === 'accepted') {
+            loadGoogleAnalytics();
+        }
+    </script>
     <style>
         :root {
             --sage: #7A9E7E;
@@ -1146,6 +1164,89 @@
             color: rgba(255,255,255,0.85);
         }
 
+        /* ===== COOKIE BANNER ===== */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            display: none;
+            animation: slideUp 0.4s ease;
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        .cookie-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.8);
+            min-width: 280px;
+        }
+
+        .cookie-text a {
+            color: var(--coral-soft);
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .cookie-btn {
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            border: none;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cookie-btn-accept {
+            background: var(--sage);
+            color: var(--white);
+        }
+
+        .cookie-btn-accept:hover {
+            background: var(--sage-light);
+        }
+
+        .cookie-btn-reject {
+            background: transparent;
+            color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cookie-btn-reject:hover {
+            border-color: rgba(255,255,255,0.5);
+            color: var(--white);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
         /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
@@ -1694,6 +1795,19 @@
         </div>
     </section>
 
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-inner">
+            <div class="cookie-text">
+                Ta strona korzysta z plików cookies i Google Analytics w celu analizy ruchu. Klikając „Akceptuję", wyrażasz zgodę na ich użycie. Więcej informacji znajdziesz w <a href="https://sentioflow.github.io/warsztaty-/polityka-prywatnosci.html" target="_blank" rel="noopener">Polityce prywatności</a>.
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Akceptuję</button>
+                <button class="cookie-btn cookie-btn-reject" id="cookieReject">Odrzucam</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
@@ -1755,6 +1869,26 @@
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+
+        // Cookie consent banner
+        const cookieBanner = document.getElementById('cookieBanner');
+        const cookieAccept = document.getElementById('cookieAccept');
+        const cookieReject = document.getElementById('cookieReject');
+
+        if (!localStorage.getItem('cookie_consent')) {
+            cookieBanner.classList.add('show');
+        }
+
+        cookieAccept.addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'accepted');
+            cookieBanner.classList.remove('show');
+            loadGoogleAnalytics();
+        });
+
+        cookieReject.addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'rejected');
+            cookieBanner.classList.remove('show');
         });
     </script>
 
