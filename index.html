@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SentioFlow — Joga dla dzieci prowadzona przez fizjoterapeutkę | Ruda Śląska</title>
+    <meta name="description" content="Jedyne na Śląsku zajęcia jogi dla dzieci 6-11 lat prowadzone przez fizjoterapeutkę dziecięcą. SP 27 Halemba, Ruda Śląska. Bezpłatny pokaz 3 marca!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #7A9E7E;
+            --sage-light: #A8C5AB;
+            --sage-pale: #E8F0E9;
+            --coral: #E8856C;
+            --coral-soft: #F2A994;
+            --sand: #F5EDE3;
+            --sand-dark: #E8DACB;
+            --charcoal: #2D3436;
+            --warm-gray: #636E72;
+            --cream: #FEFCF9;
+            --white: #FFFFFF;
+            --peach: #FFF0E8;
+            --gold: #D4A867;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--charcoal);
+            background: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(254, 252, 249, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            padding: 0.6rem 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--sage);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--coral);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--sage);
+        }
+
+        .nav-cta {
+            background: var(--coral) !important;
+            color: var(--white) !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(232, 133, 108, 0.4);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--charcoal);
+            margin: 6px 0;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(ellipse, var(--sage-pale) 0%, transparent 70%);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -5%;
+            width: 40%;
+            height: 60%;
+            background: radial-gradient(ellipse, var(--peach) 0%, transparent 70%);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--sage-pale);
+            color: var(--sage);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .hero-badge::before {
+            content: '✦';
+            font-size: 0.7rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+            animation: fadeInUp 0.8s ease 0.15s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 em {
+            color: var(--coral);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--warm-gray);
+            margin-bottom: 2rem;
+            max-width: 520px;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.45s forwards;
+            opacity: 0;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--coral);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(232, 133, 108, 0.35);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--sage);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 2px solid var(--sage-light);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--sage-pale);
+            border-color: var(--sage);
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .hero-card-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--sage-pale), var(--sage-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-card p {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--sand);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--sage);
+        }
+
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: var(--warm-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-badge.top-right {
+            top: -20px;
+            right: -20px;
+        }
+
+        .floating-badge.bottom-left {
+            bottom: -15px;
+            left: -25px;
+            animation-delay: 1.5s;
+        }
+
+        .floating-badge-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .floating-badge-text {
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .floating-badge-text span {
+            display: block;
+            font-weight: 400;
+            color: var(--warm-gray);
+            font-size: 0.72rem;
+        }
+
+        /* ===== PROBLEMS SECTION ===== */
+        .problems {
+            padding: 6rem 2rem;
+            background: var(--white);
+            position: relative;
+        }
+
+        .problems::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--sand-dark), transparent);
+        }
+
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--coral);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+
+        .section-subtitle {
+            color: var(--warm-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .problem-card {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            border: 1px solid transparent;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--coral-soft);
+            box-shadow: 0 12px 35px rgba(232, 133, 108, 0.1);
+        }
+
+        .problem-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-card p {
+            color: var(--warm-gray);
+            font-size: 0.92rem;
+        }
+
+        /* ===== WHAT IS SECTION ===== */
+        .what-is {
+            padding: 6rem 2rem;
+            background: var(--sage-pale);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .what-is::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(122, 158, 126, 0.15) 0%, transparent 70%);
+        }
+
+        .what-is-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .what-is-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            background: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .feature-text h4 {
+            font-size: 1rem;
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-text p {
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+        }
+
+        .not-yoga-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.06);
+        }
+
+        .not-yoga-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .comparison-row {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--sage-pale);
+            gap: 1rem;
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-icon {
+            font-size: 1.2rem;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .comparison-text {
+            font-size: 0.92rem;
+        }
+
+        .comparison-text.old {
+            color: var(--warm-gray);
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .comparison-text.new {
+            color: var(--sage);
+            font-weight: 700;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-photo {
+            position: relative;
+        }
+
+        .about-photo-frame {
+            background: linear-gradient(135deg, var(--sage-light), var(--sage));
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 420px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .about-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0,0,0,0.05) 0%, transparent 50%);
+        }
+
+        .about-photo-content {
+            position: relative;
+            z-index: 1;
+            color: var(--white);
+        }
+
+        .about-photo-content .credential-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            margin-right: 0.3rem;
+        }
+
+        .about-photo-emoji {
+            font-size: 5rem;
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            opacity: 0.15;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .about-content h2 em {
+            color: var(--coral);
+            font-style: italic;
+        }
+
+        .about-text {
+            color: var(--warm-gray);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .credential {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--sage-pale);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--sage);
+        }
+
+        .about-quote {
+            background: var(--peach);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--coral);
+            position: relative;
+        }
+
+        .about-quote::before {
+            content: '"';
+            font-size: 3rem;
+            position: absolute;
+            top: 0.2rem;
+            left: 1rem;
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .about-quote p {
+            padding-left: 1.5rem;
+        }
+
+        /* ===== OFFER SECTION ===== */
+        .offer {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .offer-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .offer-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .price-card {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .price-card.featured {
+            border-color: var(--coral);
+            background: var(--peach);
+        }
+
+        .price-card.featured::after {
+            content: 'Najpopularniejszy';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--coral);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .price-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+        }
+
+        .price-name {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--sage);
+        }
+
+        .price-amount span {
+            font-size: 1rem;
+            color: var(--warm-gray);
+        }
+
+        .price-per {
+            color: var(--warm-gray);
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .price-features {
+            list-style: none;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .price-features li {
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price-features li::before {
+            content: '✓';
+            color: var(--sage);
+            font-weight: 800;
+        }
+
+        .offer-details {
+            background: var(--sand);
+            border-radius: 20px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .detail-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-label {
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .detail-value {
+            color: var(--warm-gray);
+            font-size: 0.88rem;
+        }
+
+        /* ===== FREE DEMO BANNER ===== */
+        .demo-banner {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--sage), #5B8660);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.06) 0%, transparent 60%);
+        }
+
+        .demo-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -10%;
+            width: 40%;
+            height: 160%;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 60%);
+        }
+
+        .demo-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .demo-date {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .demo-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 1rem;
+        }
+
+        .demo-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .btn-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            color: var(--sage);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        /* ===== FAQ ===== */
+        .faq {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--sand-dark);
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--sage-light);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.3rem 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: var(--sage);
+            transition: transform 0.3s;
+            font-weight: 300;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.5rem 1.3rem;
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+        }
+
+        /* ===== CONTACT / FOOTER ===== */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .contact-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .contact-method:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        .contact-method-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-method-text {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .contact-method-text span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .contact-info-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .contact-info-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-info-item {
+            padding: 0.6rem 0;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.82rem;
+        }
+
+        .footer-bottom .logo {
+            font-size: 1.2rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width: 900px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                max-width: 450px;
+                margin: 0 auto;
+            }
+
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .what-is-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .offer-details {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                gap: 1rem;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding-top: 5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .hero-stat {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="logo">Sentio<span>Flow</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#problemy">Dlaczego joga?</a></li>
+                <li><a href="#o-mnie">O mnie</a></li>
+                <li><a href="#oferta">Oferta</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#kontakt" class="nav-cta">Zapisz dziecko →</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-badge">Jedyne na Śląsku</div>
+                <h1>Joga dla dzieci prowadzona przez <em>fizjoterapeutkę</em></h1>
+                <p class="hero-subtitle">Widzę nie tylko ruch — widzę, jak Twoje dziecko się rozwija. Profilaktyka wad postawy i regulacja emocji przez ruch i oddech. Dla dzieci 6–11 lat w Rudzie Śląskiej.</p>
+                <div class="hero-actions">
+                    <a href="#kontakt" class="btn-primary">Zapisz na bezpłatny pokaz →</a>
+                    <a href="#o-mnie" class="btn-secondary">Poznaj mnie</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-card-icon">🧒</div>
+                    <h3>Najbliższe zajęcia</h3>
+                    <p>SP 27 Halemba, środa 17:00 — grupy 8–10 dzieci. Kameralna atmosfera, indywidualne podejście do każdego dziecka.</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">10 lat</div>
+                            <div class="hero-stat-label">doświadczenia</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">8–10</div>
+                            <div class="hero-stat-label">dzieci w grupie</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">45 min</div>
+                            <div class="hero-stat-label">zajęcia</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-badge top-right">
+                    <div class="floating-badge-icon" style="background: var(--peach);">🎓</div>
+                    <div class="floating-badge-text">
+                        Fizjoterapeutka
+                        <span>dyplom + 10 lat praktyki</span>
+                    </div>
+                </div>
+                <div class="floating-badge bottom-left">
+                    <div class="floating-badge-icon" style="background: var(--sage-pale);">💚</div>
+                    <div class="floating-badge-text">
+                        Zero rywalizacji
+                        <span>każde dziecko w swoim tempie</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEMS -->
+    <section class="problems" id="problemy">
+        <div class="section-container">
+            <div class="section-label reveal">Czy to brzmi znajomo?</div>
+            <h2 class="section-title reveal">Twoje dziecko spędza godziny <br>przed ekranem i w ławce szkolnej</h2>
+            <p class="section-subtitle reveal">Współczesne dzieci mierzą się z problemami, których pokolenie ich rodziców nie znało. Dobra wiadomość? Można temu zaradzić — i to w sposób, który dzieciom się podoba.</p>
+            <div class="problems-grid">
+                <div class="problem-card reveal">
+                    <div class="problem-icon" style="background: #FFF0E8;">🪑</div>
+                    <h3>Wady postawy</h3>
+                    <p>Dziecko za dużo siedzi — w szkole, nad lekcjami, przed tabletem. Kręgosłup cierpi, a Ty widzisz coraz bardziej zgarbioną sylwetkę.</p>
+                </div>
+                <div class="problem-card reveal">
+                    <div class="problem-icon" style="background: #E8F0E9;">⚡</div>
+                    <h3>Nadpobudliwość i trudne emocje</h3>
+                    <p>Nie umie się wyciszyć, jest ciągle nakręcone, wybucha albo zamyka się w sobie. Szukasz czegoś, co pomoże mu się zregulować.</p>
+                </div>
+                <div class="problem-card reveal">
+                    <div class="problem-icon" style="background: #F0E8F5;">🏆</div>
+                    <h3>Ruch, ale bez presji</h3>
+                    <p>Zajęcia sportowe bywają zbyt rywalizacyjne. Chcesz dać dziecku ruch, ale bez wyścigu, porównywania i stresu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT IS SENTIOFLOW -->
+    <section class="what-is" id="co-to">
+        <div class="section-container">
+            <div class="what-is-grid">
+                <div class="reveal">
+                    <div class="section-label">Co oferuję</div>
+                    <h2 class="section-title">SentioFlow to nie jest<br> „typowa joga"</h2>
+                    <p class="section-subtitle">To program łączący elementy jogi z fizjoterapią dziecięcą. Pracuję z ciałem i emocjami jednocześnie — bo u dzieci jedno wpływa na drugie.</p>
+                    <div class="what-is-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">👁️</div>
+                            <div class="feature-text">
+                                <h4>Obserwuję postawę na bieżąco</h4>
+                                <p>Jako fizjoterapeutka widzę wady postawy i koryguję je podczas zajęć — tego nie zrobi zwykły instruktor jogi.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🫁</div>
+                            <div class="feature-text">
+                                <h4>Regulacja przez oddech i ciało</h4>
+                                <p>Uczę dzieci technik oddechowych, które mogą stosować w domu i w szkole — gdy się zdenerwują, boją lub nie mogą zasnąć.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🦒</div>
+                            <div class="feature-text">
+                                <h4>Zwierzęta w asanach</h4>
+                                <p>Dzieci ćwiczą wcielając się w zwierzęta — to zwalidowane podejście, przez które chcą wracać na zajęcia.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📋</div>
+                            <div class="feature-text">
+                                <h4>Raport dla rodzica</h4>
+                                <p>Co 8 tygodni dostajesz informację zwrotną o postępach dziecka — fizycznych i emocjonalnych.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <div class="not-yoga-box">
+                        <h3>To NIE jest ezoteryka 🙅</h3>
+                        <div class="comparison-row">
+                            <div class="comparison-icon">❌</div>
+                            <div class="comparison-text old">Mantra i medytacja dla dorosłych</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-icon">✅</div>
+                            <div class="comparison-text new">Ćwiczenia oddechowe w formie zabawy</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-icon">❌</div>
+                            <div class="comparison-text old">Trudne pozycje i naciąganie ciała</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-icon">✅</div>
+                            <div class="comparison-text new">Asany jako zabawa w zwierzęta</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-icon">❌</div>
+                            <div class="comparison-text old">Rywalizacja kto lepiej, kto szybciej</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-icon">✅</div>
+                            <div class="comparison-text new">Każde dziecko w swoim tempie</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-icon">❌</div>
+                            <div class="comparison-text old">Instruktor bez wiedzy medycznej</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-icon">✅</div>
+                            <div class="comparison-text new">Fizjoterapeutka dziecięca z 10-letnim stażem</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="o-mnie">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-photo reveal">
+                    <div class="about-photo-frame">
+                        <div class="about-photo-emoji">🧘</div>
+                        <div class="about-photo-content">
+                            <div class="credential-tag">Fizjoterapeutka</div>
+                            <div class="credential-tag">Nauczycielka</div>
+                            <div class="credential-tag">10 lat z dziećmi</div>
+                            <p style="margin-top: 1.5rem; font-size: 1.6rem; font-family: 'Playfair Display', serif;">Elżbieta Markiewicz</p>
+                            <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 0.3rem;">założycielka SentioFlow</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content reveal">
+                    <div class="section-label">O mnie</div>
+                    <h2>Fizjoterapeutka, nauczycielka, <em>mama która rozumie</em></h2>
+                    <p class="about-text">Jestem Ela. Od 10 lat pracuję z dziećmi — najpierw jako nauczycielka edukacji wczesnoszkolnej, potem jako fizjoterapeutka dziecięca. Widziałam setki dzieci z wadami postawy, z trudnościami w regulacji emocji, z ciałami zmęczonymi siedzeniem.</p>
+                    <p class="about-text">SentioFlow to połączenie moich dwóch światów — wiedzy medycznej o dziecięcym ciele i doświadczenia pedagogicznego w pracy z małymi ludźmi. Wiem, jak sprawić, żeby ćwiczenia były skuteczne i jednocześnie takie, na które dzieci CHCĄ wracać.</p>
+                    <div class="about-credentials">
+                        <div class="credential">🎓 Dyplom fizjoterapii</div>
+                        <div class="credential">📚 Pedagogika wczesnoszkolna</div>
+                        <div class="credential">🧒 10 lat pracy z dziećmi</div>
+                    </div>
+                    <div class="about-quote">
+                        <p>Widzę nie tylko ruch — widzę, jak Twoje dziecko się rozwija. Bo jestem fizjoterapeutką.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFER -->
+    <section class="offer" id="oferta">
+        <div class="section-container">
+            <div class="offer-header">
+                <div class="section-label reveal">Oferta</div>
+                <h2 class="section-title reveal">Proste pakiety,<br>zero ukrytych kosztów</h2>
+                <p class="section-subtitle reveal">Pierwsze zajęcia? Przyjdź na bezpłatny pokaz 3 marca i sprawdź, czy to coś dla Twojego dziecka. Bez zobowiązań.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card reveal">
+                    <div class="price-name">Pakiet 4</div>
+                    <div class="price-amount">180 <span>zł</span></div>
+                    <div class="price-per">45 zł / zajęcia</div>
+                    <ul class="price-features">
+                        <li>4 wejścia na zajęcia grupowe</li>
+                        <li>Grupy 8–10 dzieci</li>
+                        <li>45 minut zajęć</li>
+                        <li>Obserwacja fizjoterapeutyczna</li>
+                    </ul>
+                </div>
+                <div class="price-card featured reveal">
+                    <div class="price-name">Pakiet 8</div>
+                    <div class="price-amount">320 <span>zł</span></div>
+                    <div class="price-per">40 zł / zajęcia</div>
+                    <ul class="price-features">
+                        <li>8 wejść na zajęcia grupowe</li>
+                        <li>Grupy 8–10 dzieci</li>
+                        <li>45 minut zajęć</li>
+                        <li>Obserwacja fizjoterapeutyczna</li>
+                        <li>Raport postępów co 8 tygodni</li>
+                    </ul>
+                </div>
+                <div class="price-card reveal">
+                    <div class="price-name">Indywidualnie</div>
+                    <div class="price-amount">100 <span>zł</span></div>
+                    <div class="price-per">45 minut / sesja</div>
+                    <ul class="price-features">
+                        <li>Sesja 1 na 1 z fizjoterapeutką</li>
+                        <li>Pełna ocena fizjoterapeutyczna</li>
+                        <li>Indywidualny plan ćwiczeń</li>
+                        <li>Materiały do domu</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="offer-details reveal">
+                <div class="detail-item">
+                    <div class="detail-icon">📍</div>
+                    <div class="detail-label">SP 27 Halemba</div>
+                    <div class="detail-value">Ruda Śląska, znane miejsce, dobry czas</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">🕐</div>
+                    <div class="detail-label">Środy, 17:00</div>
+                    <div class="detail-value">Po lekcjach, wygodna godzina</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">👧</div>
+                    <div class="detail-label">Dzieci 6–11 lat</div>
+                    <div class="detail-value">Klasy 1–5 szkoły podstawowej</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FREE DEMO -->
+    <section class="demo-banner" id="pokaz">
+        <div class="demo-inner">
+            <div class="demo-date">📅 3 MARCA 2026 — BEZPŁATNIE</div>
+            <h2>Bezpłatny pokaz dla rodziców i dzieci</h2>
+            <p>Przyjdź, zobacz jak wyglądają zajęcia, zadaj pytania. Zero zobowiązań. Twoje dziecko poćwiczy, a Ty zobaczysz jak reaguję na jego potrzeby. To najlepszy sposób, żeby sprawdzić, czy SentioFlow jest dla Was.</p>
+            <a href="tel:501820148" class="btn-white">📞 Zadzwoń i zapisz się — 501 820 148</a>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="section-container">
+            <div class="faq-header">
+                <div class="section-label reveal">Najczęściej pytacie</div>
+                <h2 class="section-title reveal">Odpowiedzi na Wasze pytania</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item reveal">
+                    <button class="faq-question">Czy to jest joga „religijna" albo ezoteryczna?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Absolutnie nie. SentioFlow to program oparty na wiedzy z fizjoterapii i pedagogiki. Używamy elementów jogi — asan (pozycji ciała) i ćwiczeń oddechowych — jako narzędzi do poprawy postawy i regulacji emocji. Żadnej mantry, żadnej duchowości, żadnej ezoteryki. Nazywam to „rozwój ruchowy" — słowo „joga" to tylko wygodne określenie na ćwiczenia, które robimy.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">Skąd wiem, że instruktorka jest kompetentna?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Jestem dyplomowaną fizjoterapeutką dziecięcą i nauczycielką edukacji wczesnoszkolnej z 10-letnim doświadczeniem w pracy z dziećmi. To unikalne połączenie — widzę dziecko zarówno oczami terapeutki (wady postawy, napięcia mięśniowe, asymetrie), jak i pedagoga (motywacja, emocje, dynamika grupy). Na bezpłatnym pokazie 3 marca możesz zobaczyć dokładnie, jak pracuję.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">Moje dziecko jest bardzo ruchliwe / nadpobudliwe — da radę?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Właśnie takie dzieci najczęściej odnoszą największe korzyści. Zajęcia są zaprojektowane tak, żeby przeplatać ruch z wyciszeniem — dziecko wydatkuje energię, a potem uczy się ją regulować. Nie wymuszam siedzenia w bezruchu. Pracujemy stopniowo, a techniki oddechowe dają dzieciom narzędzia, które mogą stosować też poza zajęciami — w szkole czy przed snem.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">40–50 zł za zajęcia — czy to dużo?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Standardowa wizyta u fizjoterapeuty dziecięcego to 100–150 zł za sesję. Na zajęciach SentioFlow Twoje dziecko otrzymuje obserwację fizjoterapeutyczną w grupie za ułamek tej ceny. Pakiet 8 wejść (40 zł/zajęcia) to odpowiednik „taniej fizjoterapii" w formie, która dzieciom się podoba. A widoczną zmianę w postawie zobaczysz już po 2–3 tygodniach.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">Muszę być na miejscu podczas zajęć?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Nie musisz, ale jesteś mile widziana. Większość rodziców odprowadza dziecko i odbiera po 45 minutach. Na pierwszych zajęciach zachęcam do pozostania — zobaczysz jak pracuję i Twoje dziecko będzie się czuło pewniej. Później dostajesz krótką informację po każdych zajęciach.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">Co jeśli moje dziecko się znudzi i nie będzie chciało przychodzić?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Dzieciom podoba się format z wcielaniem się w zwierzęta — to podejście, które sprawdziło się w mojej 10-letniej praktyce. Każde zajęcia wyglądają inaczej, więc nie ma powtarzalności, która nudzi. A jeśli po bezpłatnym pokazie lub pierwszych zajęciach poczujesz, że to nie jest to — nie ma żadnych zobowiązań. Zależy mi na tym, żeby dzieci CHCIAŁY tu przychodzić.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="kontakt">
+        <div class="contact-inner">
+            <div>
+                <h2>Zapisz dziecko na zajęcia</h2>
+                <p>Masz pytania? Nie jesteś pewna, czy to coś dla Twojego dziecka? Zadzwoń lub napisz — chętnie porozmawiamy. Możesz też od razu zapisać się na bezpłatny pokaz 3 marca.</p>
+                <div class="contact-methods">
+                    <a href="tel:501820148" class="contact-method">
+                        <div class="contact-method-icon" style="background: rgba(232, 133, 108, 0.15);">📞</div>
+                        <div class="contact-method-text">
+                            501 820 148
+                            <span>Zadzwoń lub wyślij SMS</span>
+                        </div>
+                    </a>
+                    <a href="mailto:sentioflow@gmail.com" class="contact-method">
+                        <div class="contact-method-icon" style="background: rgba(122, 158, 126, 0.15);">📧</div>
+                        <div class="contact-method-text">
+                            sentioflow@gmail.com
+                            <span>Napisz e-mail</span>
+                        </div>
+                    </a>
+                    <a href="https://www.facebook.com" class="contact-method" target="_blank" rel="noopener">
+                        <div class="contact-method-icon" style="background: rgba(59, 89, 152, 0.1);">💬</div>
+                        <div class="contact-method-text">
+                            Facebook — SentioFlow
+                            <span>Napisz wiadomość lub dołącz do grupy</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-info-card">
+                <h3>📍 Gdzie odbywają się zajęcia</h3>
+                <div class="contact-info-item">🏫 Szkoła Podstawowa nr 27</div>
+                <div class="contact-info-item">📌 Halemba, Ruda Śląska</div>
+                <div class="contact-info-item">🕐 Środy, godzina 17:00</div>
+                <div class="contact-info-item">👧 Dzieci 6–11 lat (klasy 1–5)</div>
+                <div class="contact-info-item" style="margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.08);">
+                    <span style="font-size: 0.82rem;">NIP: 6412389393 &nbsp;|&nbsp; REGON: 543890737</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <a href="#" class="logo">Sentio<span>Flow</span></a>
+            <span>© 2026 SentioFlow Elżbieta Markiewicz. Wszelkie prawa zastrzeżone.</span>
+        </div>
+    </section>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                const isActive = item.classList.contains('active');
+
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-answer').style.maxHeight = '0';
+                });
+
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // Scroll reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
